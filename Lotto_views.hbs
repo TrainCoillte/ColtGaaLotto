@@ -1,0 +1,561 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link href="/assets/css/all.css" rel="stylesheet" type="text/css"/>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script lang="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.13.4/xlsx.full.min.js"></script>
+<body>
+<div class = "container">
+    <div class = "bg">
+    <h1 id = "h1">COLT GAA LOTTO DRAW</h1>
+    <p id = "p1">Monday 12th July 2021</p>
+    <p id = "p2">Jackpot : €300</p>
+     <img src="Crest2.png" id="pic1" alt="transparentLogo" width="160px">
+     <img src="Crest2.png" align="right" alt="transparentLogo" width="160px">
+    <div class="position floatfix">
+       
+        <div id="history">The Winning Numbers are</div>
+
+        <div class="wrapper">
+            <p class="ball">1</p>
+            <p class="ball">2</p>
+            <p class="ball">3</p>
+            <p class="ball">4</p>
+            <p class="ball">5</p>
+            <br class="clearfix">
+            <p class="ball">6</p>
+            <p class="ball">7</p>
+            <p class="ball">8</p>
+            <p class="ball">9</p>
+            <p class="ball">10</p>
+            <br class="clearfix">
+            <p class="ball">11</p>
+            <p class="ball">12</p>
+            <p class="ball">13</p>
+            <p class="ball">14</p>
+            <p class="ball">15</p>
+            <br class="clearfix">
+            <p class="ball">16</p>
+            <p class="ball">17</p>
+            <p class="ball">18</p>
+            <p class="ball">19</p>
+            <p class="ball">20</p>
+            <br class="clearfix">
+            <p class="ball">21</p>
+            <p class="ball">22</p>
+            <p class="ball">23</p>
+            <p class="ball">24</p>
+            <p class="ball">25</p>
+            <br class="clearfix">
+            <p class="ball">26</p>
+            <p class="ball">27</p>
+            <p class="ball">28</p>
+            <p class="ball">29</p>
+            <p class="ball">30</p>
+            
+        </div>
+
+     </div>
+     <button type="button" id="generate" class="clearfix">Generate</button>
+     <button type="button" id="show" class="clearfix">Show</button>
+<div class ="container2">
+    <input type = "file" id="fileUpload" accept=".xlsx"/><br />
+    <button type="button" id="uploadExcel">Convert</button>
+    <pre id="jsonData"></pre>
+</div>
+<form class="options"> 
+  <legend>4 Numbers drawn for €20 winners</legend>
+  
+  <label for="min">Min</label>
+  <input type="number" value="0" id="min" name="min">
+  
+  <label for="max">Max</label>
+  <input type="number" value="300" id="max" name="max">
+</form>
+<button class="generate2 number">?</button>
+<div id="history2">The Winning Tickets are</div>
+</div>
+</div>
+</body>
+
+</html>
+<script>
+    var number1 =0;
+    var number2=0;
+    var number3=0;
+     var number7 =1;
+    var hopethisworks;
+    var round = 0;
+    var button = document.getElementById("generate");
+    var button2 = document.getElementById("show");
+    var numbers = [];
+    var ball = document.getElementsByClassName("ball");
+//need to fall back and edit this code to prevent repeating numbers.
+        button.addEventListener("click", function () {
+
+
+            while (numbers.length < 3) {
+
+                var random = Math.floor(Math.random() * 30) + 1;
+
+                if (numbers.indexOf(random) == -1) {
+                    numbers.push(random);
+                }
+            }
+           number1=numbers[0];
+           number1="\""+number1+"\"";
+            number2=numbers[1];
+           number2="\""+number2+"\"";
+            number3=numbers[2];
+           number3="\""+number3+"\"";
+            console.log(number1);
+             console.log(number2);
+              console.log(number3);
+            //color balls
+        });
+        button2.addEventListener("click", function () {
+            console.log(round);
+            if(round==0)
+            {
+                console.log("first");
+                for (var i = 0; i < ball.length; i++) {
+
+                ball[i].style.backgroundColor = "#1900fd";
+                ball[i].style.color = ": #fbff00";
+                console.log("2nd");
+                for (var j = 0; j < numbers.length; j++) {
+                    if (numbers[0] == parseInt(ball[i].innerHTML)) {
+                        ball[i].style.backgroundColor = "Red";
+                        ball[i].style.color = "White";
+                        console.log("i work");
+                    }
+                }
+            }
+            var history = [];
+            var historyDiv = document.getElementById("history");
+            var para = document.createElement("p");
+            history.push(numbers[0]);
+
+                var node = document.createTextNode(history[0]);
+                para.appendChild(node);
+                historyDiv.appendChild(para);
+            }
+            if(round==1)
+            {
+                console.log("first2");
+                for (var i = 0; i < ball.length; i++) {
+
+                ball[i].style.backgroundColor = "#1900fd";
+                ball[i].style.color = ": #fbff00";
+                console.log("2nd");
+                for (var j = 0; j < numbers.length; j++) {
+                    if (numbers[1] == parseInt(ball[i].innerHTML)) {
+                        ball[i].style.backgroundColor = "Red";
+                        ball[i].style.color = "White";
+                        console.log("i work2");
+                    }
+                }
+            }
+            var history = [];
+            var historyDiv = document.getElementById("history");
+            var para = document.createElement("p");
+            history.push(numbers[1]);
+
+                var node = document.createTextNode(history[0]);
+                para.appendChild(node);
+                historyDiv.appendChild(para);
+            }
+            if(round==2)
+            {
+                console.log("first3");
+                for (var i = 0; i < ball.length; i++) {
+
+                ball[i].style.backgroundColor = "#1900fd";
+                ball[i].style.color = ": #fbff00";
+                console.log("2nd");
+                for (var j = 0; j < numbers.length; j++) {
+                    if (numbers[2] == parseInt(ball[i].innerHTML)) {
+                        ball[i].style.backgroundColor = "Red";
+                        ball[i].style.color = "White";
+                        console.log("i work3");
+                    }
+                }
+            }
+            var history = [];
+            var historyDiv = document.getElementById("history");
+            var para = document.createElement("p");
+            history.push(numbers[2]);
+
+                var node = document.createTextNode(history[0]);
+                para.appendChild(node);
+                historyDiv.appendChild(para);
+            }
+            round++;
+        });
+        
+        var selectedFile;
+        document.getElementById("fileUpload").addEventListener("change",function(event)
+        {
+            console.log("hello");
+            selectedFile = event.target.files[0];
+        });
+        document.getElementById("uploadExcel").addEventListener("click",function()
+        {
+            console.log("hello2");
+            if (selectedFile)
+            {
+                console.log("hi");
+                var fileReader = new FileReader();
+                fileReader.onload = function(event)
+                {
+                    var data = event.target.result;
+                    var workbook = XLSX.read(data, {
+                        type: "binary"
+                    });
+                    var i=0;
+                    workbook.SheetNames.forEach(sheet => {
+                        var rowObject = XLSX.utils.sheet_to_row_object_array(
+                            workbook.Sheets[sheet] // this is what prints to the screen.
+                        );
+                        var jsonObject = JSON.stringify(rowObject);//converts it to a string
+                        const splithope = jsonObject.split('},{');
+                        hopethisworks = splithope;
+                        var dec =0;
+                        for(var k =0; k<splithope.length; k++)
+                        {
+                        if(splithope[k].includes(number1)&&splithope[k].includes(number2)&&splithope[k].includes(number3))
+                        {
+                            console.log("this is winner" + splithope[k]);
+                            document.getElementById("jsonData").innerHTML=splithope[k];
+                            dec++;
+                            console.log(dec);
+                        }
+                        }
+                        if(dec ==0)
+                        {
+                            console.log("there is no winner");
+                            document.getElementById("jsonData").innerHTML="There is no Winner";
+                        }
+                        i++;
+                         //this is what prints to the console.
+                        
+                    });
+                };
+                fileReader.readAsBinaryString(selectedFile);
+            }
+        });
+        /**
+ * This object generates a random number
+ */
+var generator = {
+  min: 1,
+  max: 300,
+  
+  /**
+   * Generate a random number
+   */
+  getRandom: function () {
+
+    return Math.round(Math.random() * (this.max - this.min) + this.min);
+  },
+  
+  /**
+   * Set the lower number boundry
+   */
+  setMin: function (newMin) {
+    this.min = parseInt(newMin);
+  },
+  
+  /**
+   * Set the higher number boundry
+   */
+  setMax: function (newMax) {
+    this.max = parseInt(newMax);
+  }
+};
+
+    function shuffleArray(hopethisworks) {
+    for (let i = hopethisworks.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [hopethisworks[i], hopethisworks[j]] = [hopethisworks[j], hopethisworks[i]];
+    }
+    }
+
+
+var number = document.querySelector('.number');
+document.querySelector('.generate2').onclick = function () {
+    console.log(hopethisworks[44]);
+    console.log(number7)
+    if(number7 ==1)
+    {
+        console.log("in if")
+        shuffleArray(hopethisworks);
+        number7++;
+         console.log(number7)
+    }
+    console.log(hopethisworks[44]);
+	number.textContent = generator.getRandom();
+    var num = number.textContent;
+     var history2 = [];
+            var historyDiv = document.getElementById("history2");
+            var para = document.createElement("p");
+            var lastone = hopethisworks [num-1];
+            const split = lastone.split(',');
+            console.log(split);
+            console.log(split[0]);
+            console.log(split[1]);
+            var fin = "Winner is: " + split[0] + split[1] + "Random Number is " + num;
+            history2.push(fin);
+            console.log(num+"i am randomly generated");
+            for (var k in history2) {
+
+                var node = document.createTextNode(history2[k]);
+                para.appendChild(node);
+                historyDiv.appendChild(para);
+            }
+};
+
+var options = document.querySelector('.options');
+  
+options.querySelector('#min').onchange = function () {
+	generator.setMin(this.value);
+};
+	
+options.querySelector('#max').onchange = function () {
+	generator.setMax(this.value);
+};
+
+</script>
+<style>
+    #p1
+    {
+        text-align:center;
+        font-size: 40px;
+        text-shadow: 1px 1px 1px #fbff00;
+        font-family: "Chewy";
+        font-weight: bold;
+
+    }
+    #p2
+    {
+        text-align:center;
+        font-size: 40px;
+        text-shadow: 1px 1px 1px  #fbff00;
+        font-family: "Chewy";
+        font-weight: bold;
+    }
+    body {
+            font-family: "Open Sans", sans-serif;
+            background-image: linear-gradient(to right, #fbff00 ,#1900fd);
+        }
+        
+        .clearfix {
+            clear: both;
+        }
+        
+        .floatfix:after {
+            display: block;
+            content: "";
+            clear: both;
+        }
+        
+        h1 {
+            text-align: center;
+            color:Black;
+            text-shadow: 1px 1px 1px  #fbff00;
+            font-family: "Chewy";
+            font-size: 80px;
+            font-weight: bold;
+        }
+        
+        .position {
+            width: 1070px;
+            margin: 0 auto;
+        }
+        
+        .wrapper {
+            width: 380px;
+            background-color :#fbff00;
+            overflow: hidden;
+            padding: 15px;
+            border-radius: 20px;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+            float: none;
+            margin-left: 60px;
+        }
+        
+        .wrapper .ball {
+            width: 45px;
+            height: 45px;
+            text-align: center;
+            line-height: 40px;
+            color :#fbff00; 
+            border-radius: 100%;
+            float: left;
+            background-color: #1900fd;
+            margin: 10px;
+            font-weight: 500;
+            box-shadow: 1px 1px 0.5px #000;
+        }
+        
+        #generate {
+            display: block;
+            background-color: #1900fd;
+            outline: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 20px;
+            margin: 50px auto;
+            width: 140px;
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            text-align:center;
+            font-family: "Chewy";
+            color:#d9ff00;
+        }
+        #show {
+            display: block;
+            background-color: #1900fd;
+            outline: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 20px;
+            margin: 50px auto;
+            width: 140px;
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            text-align:center;
+            font-family: "Chewy";
+            color:#d9ff00;
+        }
+        
+        #history {
+            text-align: center;
+            text-transform: uppercase;
+            text-align:center;
+            font-family: "Chewy";
+            font-weight: bold;
+            -webkit-text-stroke-width: 0.3px;
+            -webkit-text-stroke-color: rgb(0, 0, 0);
+            font-size: 30px;
+            width: 460px;
+            height: 420px;
+            padding: 20px 0;
+            border-radius: 20px;
+            background-color:#1900fd;
+            float: left;
+            margin-left: 50px;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+            overflow: auto;
+        }
+         #history2 {
+            text-align: center;
+            text-align: center;
+            text-transform: uppercase;
+            text-align:center;
+            font-family: "Chewy";
+            font-weight: bold;
+            -webkit-text-stroke-width: 0.3px;
+            -webkit-text-stroke-color: rgb(0, 0, 0);
+            font-size: 30px;
+            width: 1000px;
+  min-height: 50%;
+  overflow: auto;
+  margin: auto;
+  position: relative;
+  top: 0; left: 0; bottom: 0; right: 0;
+            border-radius: 20px;
+            background-color:#1900fd;
+            float: left;
+            margin-left: 50px;
+            box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+            overflow: auto;
+        }
+        #history p {
+            font-weight: 500;
+            color: #fbff00;
+            font-size:60px;
+            font-weight: bold;
+        }
+         #history2 p {
+            font-weight: 100;
+            color: #fbff00;
+            font-size:20px;
+            font-weight: bold;
+        }
+        #jsonData
+        {
+            text-align: center;
+            text-transform: uppercase;
+            text-align:center;
+            font-family: "Chewy";
+            font-weight: bold;
+            font-size: 20px;
+        }
+        #uploadExcel
+        {
+             display: block;
+            background-color: #1900fd;
+            outline: none;
+            border-radius: 10px;
+            font-size: 20px;
+            width: 140px;
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+            text-transform: uppercase;
+            text-align:center;
+            font-family: "Chewy";
+            color:#d9ff00;
+        }
+.generate2 {
+    /* Remove button styles */
+    border: none;
+    background: transparent;
+    outline: none;
+    overflow: none;
+  
+    /* Make 'clickable' */
+    cursor: pointer;
+}
+  
+.number {
+  text-shadow: 0 0 5px #bbb;
+  
+  /* Make it big */
+  font-weight: 900;
+  font-size: 250px;
+
+  /* Center it */
+  width: 100%;
+  min-height: 50%;
+  overflow: auto;
+  margin: auto;
+  position: relative;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+
+.options {
+  background-color: #555;
+  border-radius: 5px;
+  color: #efefef;
+  padding: 10px 20px;
+  position: relative;
+  cursor: pointer;
+
+  
+  input, label {
+    display: none;
+  }
+  
+  &:hover input, &:hover label {
+    display: inline;
+  }
+  
+  input {
+    background-color: #efefef;
+    padding: 10px;
+    margin: 5px 15px;
+  }
+}
+            
+</style>
